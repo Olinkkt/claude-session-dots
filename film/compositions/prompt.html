@@ -1,0 +1,40 @@
+<template>
+<style>*{box-sizing:border-box}#root{position:absolute;inset:0;overflow:hidden;font-family:Inter;color:#fff}
+.t{font-weight:800;letter-spacing:-.02em;line-height:1.05;position:absolute}
+.h{opacity:0}.row{position:absolute;display:flex}.row svg{display:block;flex:none}
+.win{position:absolute;background:#16181C;font-family:'JetBrains Mono';font-size:40px;line-height:1.45;overflow:hidden}
+.tabs{display:flex;height:84px;background:#26292E}.tab{flex:1;display:flex;align-items:center;justify-content:center;font-size:46px;color:#A9AEB5;border-right:2px solid #16181C}
+.tab.on{background:#16181C;color:#fff}.body{position:absolute;left:0;right:0;top:84px;bottom:0;padding:44px 70px;white-space:pre}
+.dim{color:#8C929A}.hi{color:#7FB8FF}.warn{color:#E8A33D}
+.cur{position:absolute;left:0;top:0;width:66px;height:66px;z-index:50}
+.bar{position:absolute;left:0;right:0;bottom:0;height:120px;background:#1C1E21}
+.clock{position:absolute;right:50px;bottom:0;height:120px;line-height:120px;font-size:44px;font-weight:600}
+#root{background:#16181C}
+#a-body{position:absolute;left:0;right:0;top:0;padding:60px 90px;font-family:'JetBrains Mono';font-size:40px;line-height:1.45;white-space:pre}
+#a-clock{position:absolute;left:90px;top:620px;font-size:300px;font-weight:800;letter-spacing:-.03em;line-height:360px;height:360px;display:flex;overflow:hidden}
+#a-strip{height:360px}#a-strip div{height:360px}
+#a-l1,#a-l2{left:1010px;font-size:82px;width:830px}#a-l1{top:680px}#a-l2{top:680px;color:#E62921}
+.dim-prompt{color:#fff}</style>
+<div id="root" data-composition-id="prompt" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+<div id="a-body"><span class="warn">Bash command</span>
+  npm run deploy
+  Deploy the web app to staging
+
+Do you want to proceed?
+<span id="a-yes"><span class="hi">❯</span> 1. Yes</span>
+  2. Yes, and always allow access to build/ from this project
+  3. Yes, and switch to auto mode
+  4. No</div>
+<div id="a-clock"><div>14:</div><div id="a-strip"><div>02</div><div>03</div><div>04</div><div>05</div><div>06</div><div>07</div><div>08</div><div>09</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div><div>32</div><div>33</div><div>34</div><div>35</div><div>36</div><div>37</div><div>38</div><div>39</div><div>40</div><div>41</div><div>42</div><div>43</div><div>44</div><div>45</div><div>46</div><div>47</div></div></div>
+<div class="t" id="a-l1">Claude asked you something.</div>
+<div class="t h" id="a-l2">Nobody answered.</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.to("#a-strip",{y:-360*45,duration:1.7,ease:"power2.inOut"},1.2);
+tl.to("#a-l1",{opacity:0,filter:"blur(8px)",duration:.18},2.95);
+tl.fromTo("#a-l2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.18},3.05);
+tl.to("#a-clock,#a-l2",{opacity:0,filter:"blur(10px)",duration:.2,ease:"power3.in"},4.0);
+window.__timelines["prompt"] = tl;
+</script>
+</template>

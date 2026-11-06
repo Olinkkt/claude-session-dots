@@ -1,0 +1,61 @@
+<template>
+<style>*{box-sizing:border-box}#root{position:absolute;inset:0;overflow:hidden;font-family:Inter;color:#fff}
+.t{font-weight:800;letter-spacing:-.02em;line-height:1.05;position:absolute}
+.h{opacity:0}.row{position:absolute;display:flex}.row svg{display:block;flex:none}
+.win{position:absolute;background:#16181C;font-family:'JetBrains Mono';font-size:40px;line-height:1.45;overflow:hidden}
+.tabs{display:flex;height:84px;background:#26292E}.tab{flex:1;display:flex;align-items:center;justify-content:center;font-size:46px;color:#A9AEB5;border-right:2px solid #16181C}
+.tab.on{background:#16181C;color:#fff}.body{position:absolute;left:0;right:0;top:84px;bottom:0;padding:44px 70px;white-space:pre}
+.dim{color:#8C929A}.hi{color:#7FB8FF}.warn{color:#E8A33D}
+.cur{position:absolute;left:0;top:0;width:66px;height:66px;z-index:50}
+.bar{position:absolute;left:0;right:0;bottom:0;height:120px;background:#1C1E21}
+.clock{position:absolute;right:50px;bottom:0;height:120px;line-height:120px;font-size:44px;font-weight:600}
+#root{background:#16181C}
+#h-win{left:0;top:0;width:1920px;height:960px}
+#g-ground{position:absolute;inset:0;background:#F4F5F2;clip-path:circle(0px at 1220px 1020px)}
+#g-claim{left:96px;top:300px;font-size:190px;width:1700px;color:#16181C;line-height:1.05}
+#g-claim span{display:inline-block}
+#g-red{color:#E62921}
+#g-row{left:636px;top:492px;opacity:0}
+#g-mark{position:absolute;left:330px;top:445px;opacity:0}
+#g-name{left:560px;top:430px;font-size:110px;color:#16181C;clip-path:inset(0 100% 0 0);white-space:nowrap}
+#g-link{left:565px;top:575px;font-family:'JetBrains Mono';font-weight:500;font-size:40px;letter-spacing:0;color:#16181C}
+#g-sub{left:565px;top:640px;font-size:34px;font-weight:500;letter-spacing:0;color:#5A6068}</style>
+<div id="root" data-composition-id="end" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+<div class="win" id="h-win"><div class="tabs"><div class="tab" id="h-tab-as">api-server</div><div class="tab on" id="h-tab-wa">web-app</div><div class="tab" id="h-tab-ds">docs-site</div><div class="tab" id="h-tab-bi">billing</div><div class="tab" id="h-tab-mo">mobile</div><div class="tab" id="h-tab-in">infra</div></div><div class="body">⏺ Bash(npm run deploy)
+
+✻ Working…
+
+<span class="dim">esc to interrupt</span></div></div>
+<div class="bar"></div><div class="clock">14:47</div>
+<div class="row" id="h-row" style="gap:12px;left:1064px;top:972px;"><svg id="h-as" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="h-as-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="h-as-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="59.4 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">AS</text></svg><svg id="h-wa" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="h-wa-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="h-wa-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="82.0 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">WA</text></svg><svg id="h-ds" class="dot grey" width="96" height="96" viewBox="0 0 100 100"><circle id="h-ds-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="h-ds-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="90.5 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">DS</text></svg><svg id="h-bi" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="h-bi-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="h-bi-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="62.2 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">BI</text></svg><svg id="h-mo" class="dot grey" width="96" height="96" viewBox="0 0 100 100"><circle id="h-mo-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="h-mo-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="48.1 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">MO</text></svg><svg id="h-in" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="h-in-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="h-in-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="36.8 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">IN</text></svg></div>
+<div id="g-ground"></div>
+<div class="t" id="g-claim"><span class="w h">Look</span> <span class="w h">up</span> <span class="w h">only</span><br><span class="w h">when</span> <span class="w h">it's</span> <span class="w h" id="g-red">red.</span></div>
+<div class="row" id="g-row" style="gap:12px;"><svg id="g-as" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="g-as-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="g-as-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="59.4 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">AS</text></svg><svg id="g-wa" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="g-wa-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="g-wa-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="82.0 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">WA</text></svg><svg id="g-ds" class="dot grey" width="96" height="96" viewBox="0 0 100 100"><circle id="g-ds-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="g-ds-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="90.5 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">DS</text></svg><svg id="g-bi" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="g-bi-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="g-bi-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="62.2 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">BI</text></svg><svg id="g-mo" class="dot grey" width="96" height="96" viewBox="0 0 100 100"><circle id="g-mo-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="g-mo-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="48.1 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">MO</text></svg><svg id="g-in" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="g-in-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="g-in-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="36.8 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">IN</text></svg></div>
+<svg id="g-mark" width="190" height="190" viewBox="0 0 100 100"><circle cx="50" cy="50" r="39" fill="#E62921"/><circle cx="50" cy="50" r="45" fill="none" stroke="#16181C" stroke-opacity=".15" stroke-width="10"/><circle cx="50" cy="50" r="45" fill="none" stroke="#16181C" stroke-width="10" stroke-dasharray="82 282.74" transform="rotate(-90 50 50)"/></svg>
+<div class="t" id="g-name">Claude Session Dots</div>
+<div class="t h" id="g-link">github.com/cufelix/claude-session-dots</div>
+<div class="t h" id="g-sub">Cinnamon panel applet · MIT</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#g-ground",{clipPath:"circle(40px at 1220px 1020px)"},{clipPath:"circle(2300px at 1220px 1020px)",duration:.6,ease:"power2.inOut"},0);
+tl.set("#h-win,#h-row,.bar,.clock",{opacity:0},.61);
+tl.fromTo(".w",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:.13,stagger:.1},.5);
+tl.to("#g-claim",{opacity:0,filter:"blur(8px)",duration:.18},2.9);
+tl.set("#g-row",{opacity:1},3.0);
+tl.fromTo("#g-row svg",{scale:0},{scale:1,duration:.3,ease:"back.out(1.6)",transformOrigin:"50% 50%",stagger:.04,immediateRender:false},3.0);
+tl.to("#g-as",{x:270,duration:.4,ease:"power3.in"},3.5);
+tl.to("#g-wa",{x:162,duration:.4,ease:"power3.in"},3.5);
+tl.to("#g-ds",{x:54,duration:.4,ease:"power3.in"},3.5);
+tl.to("#g-bi",{x:-54,duration:.4,ease:"power3.in"},3.5);
+tl.to("#g-mo",{x:-162,duration:.4,ease:"power3.in"},3.5);
+tl.to("#g-in",{x:-270,duration:.4,ease:"power3.in"},3.5);
+tl.set("#g-row",{opacity:0},3.9);
+tl.set("#g-mark",{opacity:1,x:529,y:-2,scale:.5,transformOrigin:"50% 50%"},3.9);
+tl.to("#g-mark",{x:0,y:0,scale:1,duration:.5,ease:"expo.out"},3.92);
+tl.to("#g-name",{clipPath:"inset(0 0% 0 0)",duration:.5,ease:"power2.inOut"},4.1);
+tl.fromTo("#g-link",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:.15},4.55);
+tl.fromTo("#g-sub",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:.15},4.7);
+window.__timelines["end"] = tl;
+</script>
+</template>

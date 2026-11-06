@@ -1,0 +1,36 @@
+<template>
+<style>*{box-sizing:border-box}#root{position:absolute;inset:0;overflow:hidden;font-family:Inter;color:#fff}
+.t{font-weight:800;letter-spacing:-.02em;line-height:1.05;position:absolute}
+.h{opacity:0}.row{position:absolute;display:flex}.row svg{display:block;flex:none}
+.win{position:absolute;background:#16181C;font-family:'JetBrains Mono';font-size:40px;line-height:1.45;overflow:hidden}
+.tabs{display:flex;height:84px;background:#26292E}.tab{flex:1;display:flex;align-items:center;justify-content:center;font-size:46px;color:#A9AEB5;border-right:2px solid #16181C}
+.tab.on{background:#16181C;color:#fff}.body{position:absolute;left:0;right:0;top:84px;bottom:0;padding:44px 70px;white-space:pre}
+.dim{color:#8C929A}.hi{color:#7FB8FF}.warn{color:#E8A33D}
+.cur{position:absolute;left:0;top:0;width:66px;height:66px;z-index:50}
+.bar{position:absolute;left:0;right:0;bottom:0;height:120px;background:#1C1E21}
+.clock{position:absolute;right:50px;bottom:0;height:120px;line-height:120px;font-size:44px;font-weight:600}
+#root{background:#1C1E21}
+#d-row{left:255px;top:515px}
+#d-flood{position:absolute;inset:0;background:#E62921;clip-path:circle(0px at 600px 620px)}
+#d-title{left:96px;top:330px;font-size:230px;width:1700px;line-height:1}</style>
+<div id="root" data-composition-id="red" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+<div class="row" id="d-row" style="gap:30px;"><svg id="d-as" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="d-as-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="d-as-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="59.4 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">AS</text></svg><svg id="d-wa" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="d-wa-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="d-wa-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="82.0 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">WA</text></svg><svg id="d-ds" class="dot grey" width="210" height="210" viewBox="0 0 100 100"><circle id="d-ds-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="d-ds-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="90.5 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">DS</text></svg><svg id="d-bi" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="d-bi-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="d-bi-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="62.2 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">BI</text></svg><svg id="d-mo" class="dot grey" width="210" height="210" viewBox="0 0 100 100"><circle id="d-mo-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="d-mo-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="48.1 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">MO</text></svg><svg id="d-in" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="d-in-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="d-in-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="36.8 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">IN</text></svg></div>
+<div id="d-flood"></div>
+<div class="t h" id="d-title">Claude needs you.</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.to("#d-wa-disc",{attr:{fill:"#E62921"},duration:.08},.3);
+tl.set("#d-wa",{opacity:0.35},0.9);
+tl.set("#d-wa",{opacity:1},1.5);
+tl.set("#d-wa",{opacity:0.35},2.1);
+tl.set("#d-wa",{opacity:1},2.7);
+tl.fromTo("#d-flood",{clipPath:"circle(82px at 600px 620px)"},{clipPath:"circle(2100px at 600px 620px)",duration:.65,ease:"power2.inOut",immediateRender:false},2.9);
+tl.set("#d-row",{opacity:0},3.56);
+tl.fromTo("#d-title",{opacity:0,filter:"blur(10px)"},{opacity:1,filter:"blur(0px)",duration:.2},3.25);
+tl.to("#d-title",{opacity:0,filter:"blur(8px)",duration:.15},4.65);
+tl.set("#d-row",{opacity:1},4.69);
+tl.to("#d-flood",{clipPath:"circle(0px at 600px 620px)",duration:.28,ease:"power3.in"},4.7);
+window.__timelines["red"] = tl;
+</script>
+</template>

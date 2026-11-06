@@ -1,0 +1,55 @@
+<template>
+<style>*{box-sizing:border-box}#root{position:absolute;inset:0;overflow:hidden;font-family:Inter;color:#fff}
+.t{font-weight:800;letter-spacing:-.02em;line-height:1.05;position:absolute}
+.h{opacity:0}.row{position:absolute;display:flex}.row svg{display:block;flex:none}
+.win{position:absolute;background:#16181C;font-family:'JetBrains Mono';font-size:40px;line-height:1.45;overflow:hidden}
+.tabs{display:flex;height:84px;background:#26292E}.tab{flex:1;display:flex;align-items:center;justify-content:center;font-size:46px;color:#A9AEB5;border-right:2px solid #16181C}
+.tab.on{background:#16181C;color:#fff}.body{position:absolute;left:0;right:0;top:84px;bottom:0;padding:44px 70px;white-space:pre}
+.dim{color:#8C929A}.hi{color:#7FB8FF}.warn{color:#E8A33D}
+.cur{position:absolute;left:0;top:0;width:66px;height:66px;z-index:50}
+.bar{position:absolute;left:0;right:0;bottom:0;height:120px;background:#1C1E21}
+.clock{position:absolute;right:50px;bottom:0;height:120px;line-height:120px;font-size:44px;font-weight:600}
+#root{background:#4F6F64}
+#c-bar{transform-origin:50% 100%}
+#c-row{left:255px;top:915px;transform-origin:0 0}
+#c-clockt{z-index:2}
+#c-title{left:96px;top:180px;font-size:150px;width:1500px}
+.v{left:255px;top:190px;font-size:128px}</style>
+<div id="root" data-composition-id="panel" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+<div class="bar" id="c-bar"></div><div class="clock" id="c-clockt">14:47</div>
+<div class="row" id="c-row" style="gap:30px;"><svg id="c-as" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="c-as-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="c-as-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="59.4 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">AS</text></svg><svg id="c-wa" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="c-wa-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="c-wa-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="82.0 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">WA</text></svg><svg id="c-ds" class="dot grey" width="210" height="210" viewBox="0 0 100 100"><circle id="c-ds-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="c-ds-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="90.5 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">DS</text></svg><svg id="c-bi" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="c-bi-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="c-bi-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="62.2 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">BI</text></svg><svg id="c-mo" class="dot grey" width="210" height="210" viewBox="0 0 100 100"><circle id="c-mo-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="c-mo-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="48.1 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">MO</text></svg><svg id="c-in" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="c-in-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="c-in-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="36.8 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">IN</text></svg></div>
+<div class="t h" id="c-title">One dot for every session.</div>
+<div class="t h v" id="c-v1">Green: working</div>
+<div class="t h v" id="c-v2">Grey: idle</div>
+<div class="t h v" id="c-v3">White ring: context used</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.set("#c-row",{x:809,y:57,scale:.457},0);
+tl.fromTo("#c-bar",{y:120},{y:0,duration:.35,ease:"expo.out"},0);
+tl.fromTo("#c-clockt",{y:120},{y:0,duration:.35,ease:"expo.out"},0);
+tl.fromTo("#c-as",{scale:0},{scale:1,duration:.45,ease:"back.out(1.6)",transformOrigin:"50% 50%"},0.15);
+tl.fromTo("#c-wa",{scale:0},{scale:1,duration:.45,ease:"back.out(1.6)",transformOrigin:"50% 50%"},0.24);
+tl.fromTo("#c-ds",{scale:0},{scale:1,duration:.45,ease:"back.out(1.6)",transformOrigin:"50% 50%"},0.33);
+tl.fromTo("#c-bi",{scale:0},{scale:1,duration:.45,ease:"back.out(1.6)",transformOrigin:"50% 50%"},0.42);
+tl.fromTo("#c-mo",{scale:0},{scale:1,duration:.45,ease:"back.out(1.6)",transformOrigin:"50% 50%"},0.51);
+tl.fromTo("#c-in",{scale:0},{scale:1,duration:.45,ease:"back.out(1.6)",transformOrigin:"50% 50%"},0.60);
+tl.fromTo("#c-title",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.2},1);
+tl.to("#c-title",{opacity:0,filter:"blur(8px)",duration:.18},3.0);
+tl.to("#c-bar",{scaleY:9,duration:.6,ease:"power2.inOut"},3.05);
+tl.to("#c-clockt",{opacity:0,duration:.15},3.05);
+tl.to("#c-row",{x:0,y:-400,scale:1,duration:.6,ease:"power2.inOut"},3.05);
+tl.fromTo("#c-v1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.15},3.65);
+tl.to("#c-ds,#c-mo",{opacity:.25,duration:.15},3.65);
+tl.to("#c-v1",{opacity:0,duration:.12},4.75);
+tl.fromTo("#c-v2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.15},4.85);
+tl.to("#c-ds,#c-mo",{opacity:1,duration:.15},4.85);tl.to("#c-as,#c-wa,#c-bi,#c-in",{opacity:.25,duration:.15},4.85);
+tl.to("#c-v2",{opacity:0,duration:.12},5.75);
+tl.fromTo("#c-v3",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.15},5.85);
+tl.to("#c-as,#c-wa,#c-bi,#c-in",{opacity:1,duration:.15},5.85);
+tl.fromTo("#c-wa-arc",{attr:{"stroke-dasharray":"82.0 282.74"}},{attr:{"stroke-dasharray":"175.3 282.74"},duration:.9,ease:"power2.inOut"},5.95);
+tl.to("#c-wa-arc",{attr:{"stroke-dasharray":"82.0 282.74"},duration:.3,ease:"power2.inOut"},7.05);
+tl.to("#c-v3",{opacity:0,duration:.12},7.2);
+window.__timelines["panel"] = tl;
+</script>
+</template>

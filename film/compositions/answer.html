@@ -1,0 +1,67 @@
+<template>
+<style>*{box-sizing:border-box}#root{position:absolute;inset:0;overflow:hidden;font-family:Inter;color:#fff}
+.t{font-weight:800;letter-spacing:-.02em;line-height:1.05;position:absolute}
+.h{opacity:0}.row{position:absolute;display:flex}.row svg{display:block;flex:none}
+.win{position:absolute;background:#16181C;font-family:'JetBrains Mono';font-size:40px;line-height:1.45;overflow:hidden}
+.tabs{display:flex;height:84px;background:#26292E}.tab{flex:1;display:flex;align-items:center;justify-content:center;font-size:46px;color:#A9AEB5;border-right:2px solid #16181C}
+.tab.on{background:#16181C;color:#fff}.body{position:absolute;left:0;right:0;top:84px;bottom:0;padding:44px 70px;white-space:pre}
+.dim{color:#8C929A}.hi{color:#7FB8FF}.warn{color:#E8A33D}
+.cur{position:absolute;left:0;top:0;width:66px;height:66px;z-index:50}
+.bar{position:absolute;left:0;right:0;bottom:0;height:120px;background:#1C1E21}
+.clock{position:absolute;right:50px;bottom:0;height:120px;line-height:120px;font-size:44px;font-weight:600}
+#root{background:#1C1E21}
+#e-row{left:255px;top:515px}
+#e-tip{position:absolute;left:255px;top:190px;background:#000;border:2px solid #4A4E55;border-radius:10px;padding:26px 36px;font-size:38px;line-height:1.4;white-space:pre}
+#e-tip b{color:#fff}
+#e-term{position:absolute;inset:0;clip-path:circle(0px at 600px 620px);background:#16181C}
+#e-win{left:0;top:0;width:1920px;height:960px}
+#e-p2{top:84px}
+#e-wrow{left:1064px;bottom:12px}
+#e-cur{z-index:50}</style>
+<div id="root" data-composition-id="answer" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+<div class="row" id="e-row" style="gap:30px;"><svg id="e-as" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="e-as-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="e-as-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="59.4 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">AS</text></svg><svg id="e-wa" class="dot red" width="210" height="210" viewBox="0 0 100 100"><circle id="e-wa-disc" cx="50" cy="50" r="39" fill="#E62921"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="e-wa-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="82.0 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">WA</text></svg><svg id="e-ds" class="dot grey" width="210" height="210" viewBox="0 0 100 100"><circle id="e-ds-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="e-ds-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="90.5 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">DS</text></svg><svg id="e-bi" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="e-bi-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="e-bi-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="62.2 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">BI</text></svg><svg id="e-mo" class="dot grey" width="210" height="210" viewBox="0 0 100 100"><circle id="e-mo-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="e-mo-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="48.1 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">MO</text></svg><svg id="e-in" class="dot green" width="210" height="210" viewBox="0 0 100 100"><circle id="e-in-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="e-in-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="36.8 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">IN</text></svg></div>
+<div id="e-tip" class="h"><b>web-app</b>
+NEEDS YOU: permission prompt for 45m · 290k context · opus-5-5
+~/projects/web-app (main)</div>
+<div id="e-term">
+ <div class="win" id="e-win"><div class="tabs"><div class="tab" id="e-tab-as">api-server</div><div class="tab" id="e-tab-wa">web-app</div><div class="tab" id="e-tab-ds">docs-site</div><div class="tab" id="e-tab-bi">billing</div><div class="tab" id="e-tab-mo">mobile</div><div class="tab on" id="e-tab-in">infra</div></div>
+  <div class="body" id="e-work">✻ Thinking…
+
+<span class="dim">esc to interrupt</span></div>
+  <div class="body h" id="e-prompt"><span class="warn">Bash command</span>
+  npm run deploy
+  Deploy the web app to staging
+
+Do you want to proceed?
+<span id="e-yes"><span class="hi">❯</span> 1. Yes</span>
+  2. Yes, and always allow access to build/ from this project
+  3. Yes, and switch to auto mode
+  4. No</div>
+  <div class="body h" id="e-done">⏺ Bash(npm run deploy)
+
+✻ Working…
+
+<span class="dim">esc to interrupt</span></div>
+ </div>
+ <div class="bar"></div><div class="clock">14:47</div>
+ <div class="row" id="f-row" style="gap:12px;left:1064px;top:972px;"><svg id="f-as" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="f-as-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="f-as-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="59.4 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">AS</text></svg><svg id="f-wa" class="dot red" width="96" height="96" viewBox="0 0 100 100"><circle id="f-wa-disc" cx="50" cy="50" r="39" fill="#E62921"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="f-wa-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="82.0 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">WA</text></svg><svg id="f-ds" class="dot grey" width="96" height="96" viewBox="0 0 100 100"><circle id="f-ds-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="f-ds-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="90.5 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">DS</text></svg><svg id="f-bi" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="f-bi-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="f-bi-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="62.2 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">BI</text></svg><svg id="f-mo" class="dot grey" width="96" height="96" viewBox="0 0 100 100"><circle id="f-mo-disc" cx="50" cy="50" r="39" fill="#73787F"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="f-mo-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="48.1 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">MO</text></svg><svg id="f-in" class="dot green" width="96" height="96" viewBox="0 0 100 100"><circle id="f-in-disc" cx="50" cy="50" r="39" fill="#1C8C4D"/><circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle id="f-in-arc" cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="36.8 282.74" transform="rotate(-90 50 50)"/><text x="50" y="50" dy=".36em" text-anchor="middle" font-family="Inter" font-weight="800" font-size="37" fill="#fff">IN</text></svg></div>
+</div>
+<svg class="cur h" id="e-cur" viewBox="0 0 24 24"><path d="M3 2l15 12-7 1 4 7-3 1.5-4-7-5 5z" fill="#fff" stroke="#000" stroke-width="1.3" stroke-linejoin="round"/></svg>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.set("#e-cur",{opacity:1,scale:1.5,x:1500,y:1000},0);
+tl.to("#e-cur",{x:600,y:620,duration:.6,ease:"power2.inOut"},.1);
+tl.fromTo("#e-tip",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:.15},.85);
+tl.fromTo("#e-term",{clipPath:"circle(0px at 600px 620px)"},{clipPath:"circle(2100px at 600px 620px)",duration:.3,ease:"power3.in"},3.90);
+tl.set("#e-row,#e-tip",{opacity:0},4.21);
+tl.to("#e-cur",{x:505,y:62,duration:.45,ease:"power2.inOut"},4.15);
+tl.set(".tab",{background:"#26292E",color:"#A9AEB5"},4.62);
+tl.set("#e-tab-wa",{background:"#16181C",color:"#fff"},4.62);
+tl.set("#e-work",{opacity:0},4.62);tl.set("#e-prompt",{opacity:1},4.62);
+tl.set("#e-yes",{backgroundColor:"#2F6FBF"},5.10);
+tl.set("#e-prompt",{opacity:0},5.25);tl.set("#e-done",{opacity:1},5.25);
+tl.to("#f-wa-disc",{attr:{fill:"#1C8C4D"},duration:.1},5.25);
+window.__timelines["answer"] = tl;
+</script>
+</template>

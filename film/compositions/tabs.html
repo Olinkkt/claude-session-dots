@@ -1,0 +1,62 @@
+<template>
+<style>*{box-sizing:border-box}#root{position:absolute;inset:0;overflow:hidden;font-family:Inter;color:#fff}
+.t{font-weight:800;letter-spacing:-.02em;line-height:1.05;position:absolute}
+.h{opacity:0}.row{position:absolute;display:flex}.row svg{display:block;flex:none}
+.win{position:absolute;background:#16181C;font-family:'JetBrains Mono';font-size:40px;line-height:1.45;overflow:hidden}
+.tabs{display:flex;height:84px;background:#26292E}.tab{flex:1;display:flex;align-items:center;justify-content:center;font-size:46px;color:#A9AEB5;border-right:2px solid #16181C}
+.tab.on{background:#16181C;color:#fff}.body{position:absolute;left:0;right:0;top:84px;bottom:0;padding:44px 70px;white-space:pre}
+.dim{color:#8C929A}.hi{color:#7FB8FF}.warn{color:#E8A33D}
+.cur{position:absolute;left:0;top:0;width:66px;height:66px;z-index:50}
+.bar{position:absolute;left:0;right:0;bottom:0;height:120px;background:#1C1E21}
+.clock{position:absolute;right:50px;bottom:0;height:120px;line-height:120px;font-size:44px;font-weight:600}
+#root{background:#4F6F64}
+#b-win{left:0;top:-84px;width:1920px;height:1164px;box-shadow:0 30px 80px rgba(0,0,0,.45);transform-origin:0 0}
+#b-l1,#b-l2{left:70px;font-size:112px;width:560px}#b-l1{top:150px}#b-l2{top:560px}</style>
+<div id="root" data-composition-id="tabs" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+<div class="win" id="b-win"><div class="tabs"><div class="tab" id="b-tab-as">api-server</div><div class="tab on" id="b-tab-wa">web-app</div><div class="tab" id="b-tab-ds">docs-site</div><div class="tab" id="b-tab-bi">billing</div><div class="tab" id="b-tab-mo">mobile</div><div class="tab" id="b-tab-in">infra</div></div><div class="body" id="b-body0"><span class="warn">Bash command</span>
+  npm run deploy
+  Deploy the web app to staging
+
+Do you want to proceed?
+<span id="b-yes"><span class="hi">❯</span> 1. Yes</span>
+  2. Yes, and always allow access to build/ from this project
+  3. Yes, and switch to auto mode
+  4. No</div><div class="body h" id="b-b0">✻ Working… running tests
+
+<span class="dim">esc to interrupt</span></div><div class="body h" id="b-b1">✻ Thinking…
+
+<span class="dim">esc to interrupt</span></div><div class="body h" id="b-b2">✻ Working… editing checkout.ts
+
+<span class="dim">esc to interrupt</span></div><div class="body h" id="b-b3">✻ Working… 3 agents running
+
+<span class="dim">esc to interrupt</span></div><div class="body h" id="b-b4">✻ Thinking…
+
+<span class="dim">esc to interrupt</span></div><svg class="cur h" id="b-cur" viewBox="0 0 24 24"><path d="M3 2l15 12-7 1 4 7-3 1.5-4-7-5 5z" fill="#fff" stroke="#000" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
+<div class="t h" id="b-l1">Six tabs.</div><div class="t h" id="b-l2">Which one?</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.to("#b-win",{x:680,y:190,scale:.62,duration:.6,ease:"power2.inOut"},0);
+tl.fromTo("#b-l1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.18},.45);
+tl.set("#b-cur",{opacity:1,x:1500,y:900,scale:1.5},.5);
+tl.to("#b-cur",{x:160,y:60,duration:.3,ease:"power2.inOut"},0.70);
+tl.set("#b-body0,.body",{opacity:0},1.00);tl.set("#b-b0",{opacity:1},1.00);
+tl.set(".tab",{background:"#26292E",color:"#A9AEB5"},1.00);tl.set("#b-tab-as",{background:"#16181C",color:"#fff"},1.00);
+tl.to("#b-cur",{x:800,y:60,duration:.3,ease:"power2.inOut"},1.12);
+tl.set("#b-body0,.body",{opacity:0},1.42);tl.set("#b-b1",{opacity:1},1.42);
+tl.set(".tab",{background:"#26292E",color:"#A9AEB5"},1.42);tl.set("#b-tab-ds",{background:"#16181C",color:"#fff"},1.42);
+tl.to("#b-cur",{x:1120,y:60,duration:.3,ease:"power2.inOut"},1.54);
+tl.set("#b-body0,.body",{opacity:0},1.84);tl.set("#b-b2",{opacity:1},1.84);
+tl.set(".tab",{background:"#26292E",color:"#A9AEB5"},1.84);tl.set("#b-tab-bi",{background:"#16181C",color:"#fff"},1.84);
+tl.to("#b-cur",{x:1440,y:60,duration:.3,ease:"power2.inOut"},1.96);
+tl.set("#b-body0,.body",{opacity:0},2.26);tl.set("#b-b3",{opacity:1},2.26);
+tl.set(".tab",{background:"#26292E",color:"#A9AEB5"},2.26);tl.set("#b-tab-mo",{background:"#16181C",color:"#fff"},2.26);
+tl.to("#b-cur",{x:1760,y:60,duration:.3,ease:"power2.inOut"},2.38);
+tl.set("#b-body0,.body",{opacity:0},2.68);tl.set("#b-b4",{opacity:1},2.68);
+tl.set(".tab",{background:"#26292E",color:"#A9AEB5"},2.68);tl.set("#b-tab-in",{background:"#16181C",color:"#fff"},2.68);
+tl.fromTo("#b-l2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.18},2.3);
+tl.to("#b-win",{y:-1100,duration:.4,ease:"power3.in"},3.6);
+tl.to("#b-l1,#b-l2",{opacity:0,filter:"blur(8px)",duration:.2},3.6);
+window.__timelines["tabs"] = tl;
+</script>
+</template>
