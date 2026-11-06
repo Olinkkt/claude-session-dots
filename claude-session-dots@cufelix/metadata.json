@@ -1,0 +1,7 @@
+{
+  "uuid": "claude-session-dots@cufelix",
+  "name": "Claude Session Dots",
+  "description": "One dot per running Claude Code session. Turns red and blinks when Claude needs you.",
+  "version": "1.0",
+  "max-instances": 1
+}
