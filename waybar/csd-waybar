@@ -88,9 +88,11 @@ def disc(cr, x, s, dim):
 
 def image(n):
     """Draw session n (1-based) as a disc PNG. Line 1 is the path, the rest the tooltip.
-    Prints nothing when there is no session n, which hides that Waybar module."""
+    With no session n it prints a path to a file that does not exist, which hides that
+    module. Printing nothing would not: Waybar keeps showing the previous image."""
     rows = sessions()
     if n > len(rows):
+        print(f"{IMAGE}.{n}.none")
         return
     s = rows[n - 1]
     path = f"{IMAGE}.{n}.png"
