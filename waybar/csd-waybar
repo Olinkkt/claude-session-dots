@@ -2,7 +2,8 @@
 """Waybar + Hyprland frontend for Claude Session Dots.
 
   csd-waybar status   print one Waybar JSON object (colored tags as Pango markup)
-  csd-waybar focus    focus the terminal of the session that needs you most
+  csd-waybar image N  draw session N as a disc PNG (one Waybar image module per slot)
+  csd-waybar focus [N] focus session N, or the one that needs you most
 
 Reuses collect.py from the Cinnamon applet folder, unchanged.
 """
@@ -15,11 +16,39 @@ import time
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "claude-session-dots@cufelix"))
 import collect  # noqa: E402
+try:
+    import cairo
+except ImportError:  # only the image mode needs it
+    cairo = None
 
 COLORS = {"attention": "#e62921", "busy": "#1c8c4d", "other": "#73787f"}
+RGB = {"attention": (0.90, 0.16, 0.13), "busy": (0.11, 0.55, 0.30), "other": (0.45, 0.47, 0.50)}
+SIZE, GAP = 48, 6  # px per disc, drawn large so Waybar scales it down sharply
+IMAGE = os.path.join(os.environ.get("XDG_RUNTIME_DIR", "/tmp"), "claude-session-dots.png")
+
+
+CACHE = os.path.join(os.environ.get("XDG_RUNTIME_DIR", "/tmp"), "claude-session-dots.json")
 
 
 def sessions():
+    """Cached for 0.8s, so one module per session does not mean one collect run each."""
+    try:
+        if time.time() - os.path.getmtime(CACHE) < 0.8:
+            with open(CACHE) as f:
+                return json.load(f)
+    except (OSError, ValueError):
+        pass
+    rows = collect_now()
+    try:
+        with open(CACHE + ".tmp", "w") as f:
+            json.dump(rows, f)
+        os.replace(CACHE + ".tmp", CACHE)
+    except OSError:
+        pass
+    return rows
+
+
+def collect_now():
     claude_dir = os.environ.get("CLAUDE_CONFIG_DIR") or f"{collect.HOME}/.claude"
     return collect.collect(claude_dir, int(time.time() * 1000))
 
@@ -28,6 +57,50 @@ def color(s):
     if s["attention"]:
         return COLORS["attention"]
     return COLORS["busy"] if s["status"] == "busy" else COLORS["other"]
+
+
+def disc(cr, x, s, dim):
+    """One disc like the Cinnamon applet: colour, white context ring, initials."""
+    ring = SIZE * 0.1
+    cx = x + SIZE / 2
+    cy = SIZE / 2
+    r = SIZE / 2 - ring - 1
+    ring_r = SIZE / 2 - ring / 2
+    key = "attention" if s["attention"] else ("busy" if s["status"] == "busy" else "other")
+    cr.set_source_rgba(*RGB[key], 0.35 if dim else 1)
+    cr.arc(cx, cy, r, 0, 6.2832)
+    cr.fill()
+    if s["contextFraction"] is not None:
+        cr.set_line_width(ring)
+        cr.set_source_rgba(1, 1, 1, 0.2)
+        cr.arc(cx, cy, ring_r, 0, 6.2832)
+        cr.stroke()
+        cr.set_source_rgba(1, 1, 1, 1)
+        cr.arc(cx, cy, ring_r, -1.5708, -1.5708 + 6.2832 * s["contextFraction"])
+        cr.stroke()
+    cr.select_font_face("Sans", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    cr.set_font_size(r * 0.95)
+    box = cr.text_extents(s["label"])
+    cr.set_source_rgb(1, 1, 1)
+    cr.move_to(cx - box.width / 2 - box.x_bearing, cy - box.height / 2 - box.y_bearing)
+    cr.show_text(s["label"])
+
+
+def image(n):
+    """Draw session n (1-based) as a disc PNG. Line 1 is the path, the rest the tooltip.
+    Prints nothing when there is no session n, which hides that Waybar module."""
+    rows = sessions()
+    if n > len(rows):
+        return
+    s = rows[n - 1]
+    path = f"{IMAGE}.{n}.png"
+    surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, SIZE, SIZE)
+    cr = cairo.Context(surface)
+    disc(cr, 0, s, dim=s["attention"] and int(time.time()) % 2 == 1)
+    surface.write_to_png(path + ".tmp")
+    os.replace(path + ".tmp", path)
+    print(path)
+    print(s["tooltip"])
 
 
 def status():
@@ -45,12 +118,12 @@ def status():
             "alt": str(needs)}
 
 
-def focus():
+def focus(n=None):
     rows = sessions()
-    if not rows:
+    if not rows or (n and n > len(rows)):
         return
-    # Red sessions first, then the oldest session.
-    target = next((s for s in rows if s["attention"]), rows[0])
+    # With no number: the red session first, then the oldest.
+    target = rows[n - 1] if n else next((s for s in rows if s["attention"]), rows[0])
     clients = json.loads(subprocess.check_output(["hyprctl", "clients", "-j"]))
     for client in clients:
         if client["pid"] in target["pids"]:
@@ -62,6 +135,8 @@ def focus():
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
     if cmd == "focus":
-        focus()
+        focus(int(sys.argv[2]) if len(sys.argv) > 2 else None)
+    elif cmd == "image":
+        image(int(sys.argv[2]))
     else:
         print(json.dumps(status()))

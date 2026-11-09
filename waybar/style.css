@@ -1,12 +1,9 @@
-#custom-claude-dots {
-    padding: 0 10px;
-}
-
-/* Waybar can't blink a single dot, so the whole module pulses when Claude needs you. */
-@keyframes csd-blink {
-    to { background-color: rgba(230, 41, 33, 0.35); }
-}
-
-#custom-claude-dots.attention {
-    animation: csd-blink 0.6s steps(1) infinite alternate;
+/* One disc per session. Slots without a session are hidden by Waybar. */
+#image.claude-dots-1,
+#image.claude-dots-2,
+#image.claude-dots-3,
+#image.claude-dots-4,
+#image.claude-dots-5,
+#image.claude-dots-6 {
+    margin: 0 2px;
 }

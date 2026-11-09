@@ -1,7 +1,50 @@
-"custom/claude-dots": {
-    "exec": "~/.local/share/claude-session-dots/waybar/csd-waybar status",
-    "return-type": "json",
-    "interval": 2,
+// Add the six modules below to ~/.config/waybar/config, and list
+// "image#claude-dots-1" ... "image#claude-dots-6" in one modules-* array.
+// Slots without a session hide themselves.
+"image#claude-dots-1": {
+    "exec": "~/.local/share/claude-session-dots/waybar/csd-waybar image 1",
+    "interval": 1,
+    "size": 20,
     "tooltip": true,
-    "on-click": "~/.local/share/claude-session-dots/waybar/csd-waybar focus"
+    "on-click": "~/.local/share/claude-session-dots/waybar/csd-waybar focus 1"
+},
+
+"image#claude-dots-2": {
+    "exec": "~/.local/share/claude-session-dots/waybar/csd-waybar image 2",
+    "interval": 1,
+    "size": 20,
+    "tooltip": true,
+    "on-click": "~/.local/share/claude-session-dots/waybar/csd-waybar focus 2"
+},
+
+"image#claude-dots-3": {
+    "exec": "~/.local/share/claude-session-dots/waybar/csd-waybar image 3",
+    "interval": 1,
+    "size": 20,
+    "tooltip": true,
+    "on-click": "~/.local/share/claude-session-dots/waybar/csd-waybar focus 3"
+},
+
+"image#claude-dots-4": {
+    "exec": "~/.local/share/claude-session-dots/waybar/csd-waybar image 4",
+    "interval": 1,
+    "size": 20,
+    "tooltip": true,
+    "on-click": "~/.local/share/claude-session-dots/waybar/csd-waybar focus 4"
+},
+
+"image#claude-dots-5": {
+    "exec": "~/.local/share/claude-session-dots/waybar/csd-waybar image 5",
+    "interval": 1,
+    "size": 20,
+    "tooltip": true,
+    "on-click": "~/.local/share/claude-session-dots/waybar/csd-waybar focus 5"
+},
+
+"image#claude-dots-6": {
+    "exec": "~/.local/share/claude-session-dots/waybar/csd-waybar image 6",
+    "interval": 1,
+    "size": 20,
+    "tooltip": true,
+    "on-click": "~/.local/share/claude-session-dots/waybar/csd-waybar focus 6"
 }
