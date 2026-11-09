@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Waybar + Hyprland frontend for Claude Session Dots.
 
-  csd-waybar status   print one Waybar JSON object (dots as Pango markup)
+  csd-waybar status   print one Waybar JSON object (colored tags as Pango markup)
   csd-waybar focus    focus the terminal of the session that needs you most
 
 Reuses collect.py from the Cinnamon applet folder, unchanged.
@@ -34,8 +34,9 @@ def status():
     rows = sessions()
     if not rows:
         return {"text": "", "tooltip": "No active Claude sessions", "class": "empty"}
-    dots = " ".join(
-        f'<span foreground="{color(s)}">●</span><span size="small"> {html.escape(s["label"])}</span>'
+    dots = "  ".join(
+        f'<span background="{color(s)}" foreground="#ffffff" font_weight="bold">'
+        f'\u2009{html.escape(s["label"])}\u2009</span>'
         for s in rows)
     tooltip = "\n\n".join(
         f'<span foreground="{color(s)}">●</span> {html.escape(s["tooltip"])}' for s in rows)

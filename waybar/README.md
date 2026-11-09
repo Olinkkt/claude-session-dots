@@ -1,6 +1,6 @@
 # Waybar / Hyprland frontend
 
-One colored dot and the session's initials for every running Claude Code session,
+One colored tag with the session's initials for every running Claude Code session,
 in a single Waybar module. Red means Claude needs you. Same data as the Cinnamon applet,
 since it reuses `../claude-session-dots@cufelix/collect.py` unchanged.
 
@@ -23,5 +23,5 @@ since it reuses `../claude-session-dots@cufelix/collect.py` unchanged.
 
 ## Limits
 
-- Waybar draws one text label per module, so there is no per-dot click, no context ring, and the red blink pulses the whole module.
+- Waybar draws one text label per module, so there is no per-tag click, no context ring, and the red blink pulses the whole module.
 - Focus raises the terminal window, not the tab. Sessions inside tmux have no window to raise.
