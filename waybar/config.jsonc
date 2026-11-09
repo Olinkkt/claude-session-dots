@@ -1,0 +1,7 @@
+"custom/claude-dots": {
+    "exec": "~/.local/share/claude-session-dots/waybar/csd-waybar status",
+    "return-type": "json",
+    "interval": 2,
+    "tooltip": true,
+    "on-click": "~/.local/share/claude-session-dots/waybar/csd-waybar focus"
+}

@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+"""Waybar + Hyprland frontend for Claude Session Dots.
+
+  csd-waybar status   print one Waybar JSON object (dots as Pango markup)
+  csd-waybar focus    focus the terminal of the session that needs you most
+
+Reuses collect.py from the Cinnamon applet folder, unchanged.
+"""
+import html
+import json
+import os
+import subprocess
+import sys
+import time
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "claude-session-dots@cufelix"))
+import collect  # noqa: E402
+
+COLORS = {"attention": "#e62921", "busy": "#1c8c4d", "other": "#73787f"}
+
+
+def sessions():
+    claude_dir = os.environ.get("CLAUDE_CONFIG_DIR") or f"{collect.HOME}/.claude"
+    return collect.collect(claude_dir, int(time.time() * 1000))
+
+
+def color(s):
+    if s["attention"]:
+        return COLORS["attention"]
+    return COLORS["busy"] if s["status"] == "busy" else COLORS["other"]
+
+
+def status():
+    rows = sessions()
+    if not rows:
+        return {"text": "", "tooltip": "No active Claude sessions", "class": "empty"}
+    dots = " ".join(
+        f'<span foreground="{color(s)}">●</span><span size="small"> {html.escape(s["label"])}</span>'
+        for s in rows)
+    tooltip = "\n\n".join(
+        f'<span foreground="{color(s)}">●</span> {html.escape(s["tooltip"])}' for s in rows)
+    needs = sum(s["attention"] for s in rows)
+    return {"text": dots, "tooltip": tooltip, "class": "attention" if needs else "ok",
+            "alt": str(needs)}
+
+
+def focus():
+    rows = sessions()
+    if not rows:
+        return
+    # Red sessions first, then the oldest session.
+    target = next((s for s in rows if s["attention"]), rows[0])
+    clients = json.loads(subprocess.check_output(["hyprctl", "clients", "-j"]))
+    for client in clients:
+        if client["pid"] in target["pids"]:
+            subprocess.run(["hyprctl", "dispatch", "focuswindow", f"address:{client['address']}"],
+                           stdout=subprocess.DEVNULL)
+            return
+
+
+if __name__ == "__main__":
+    cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
+    if cmd == "focus":
+        focus()
+    else:
+        print(json.dumps(status()))
